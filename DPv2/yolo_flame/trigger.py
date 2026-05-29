@@ -16,7 +16,7 @@ results = model(source_rtsp, stream=True, show=True, conf=0.55)  # return a gene
 for result in results:
     if len(result.boxes.conf) > 0: #Tjekker om confidence valuen stiger. Så snart detecter en flamme bliver den triggered.
         client = SSHClient()
-        client.load_system_host_keys()
+        #client.load_system_host_keys()
         client.connect("raspberrypi.local", port=22, username="pi", password="12345678")
         stdin, stdout, stderr = client.exec_command('python3 trigger_on.py')
         print("Sendt")
